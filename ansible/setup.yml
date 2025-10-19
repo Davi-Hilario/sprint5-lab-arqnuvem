@@ -12,9 +12,9 @@
 
     - name: Criar diretórios de dados
       file:
-        path: "/data/{{ item }}"
+        path: "../data/{{ item }}"
         state: directory
-        loop:
-          - raw
-          - trusted
-          - client
+      loop:
+        - raw
+        - trusted
+        - client
