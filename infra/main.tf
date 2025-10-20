@@ -19,7 +19,7 @@ resource "tls_private_key" "pk" {
 }
 resource "aws_key_pair" "kp" {
   key_name   = "key_19102025"
-  public_key = "~/.ssh/${tls_private_key.pk.public_key_openssh}"
+  public_key = tls_private_key.pk.public_key_openssh
 }
 resource "local_file" "ssh_key" {
   filename        = "${aws_key_pair.kp.key_name}.pem"
@@ -33,6 +33,8 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = "Sprint5-EC2"
   }
+
+  key_name = var.pk_instacia
 }
 
 output "bucket_name" {

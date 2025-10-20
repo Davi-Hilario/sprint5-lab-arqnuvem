@@ -4,3 +4,8 @@ variable "aws_region" {
 variable "bucket_name" {
   default = "lab-sprint5-arqnuvem-davi2-19102025"
 }
+
+variable "pk_instacia" {
+  type    = string
+  default = "key_19102025"
+}
