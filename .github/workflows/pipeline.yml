@@ -19,12 +19,12 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Criar chave privada da EC2
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.CHAVE_PEM }}" > ~/.ssh/key_19102025.pem
-          chmod 400 ~/.ssh/chave_lab07.pem
-          ls -l ~/.ssh
+      # - name: Criar chave privada da EC2
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrets.CHAVE_PEM }}" > ~/.ssh/key_19102025.pem
+      #     chmod 400 ~/.ssh/key_19102025.pem
+      #     ls -l ~/.ssh
 
       - name: Terraform Apply
         run: |
