@@ -26,6 +26,7 @@ jobs:
           echo "${{ secrets.CHAVE_PEM }}" > ~/.ssh/key-19102025.pem
           chmod 400 ~/.ssh/key-19102025.pem
           ls -l ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
       - name: Instalar Terraform
         uses: hashicorp/setup-terraform@v3
