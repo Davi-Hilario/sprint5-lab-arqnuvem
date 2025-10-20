@@ -32,7 +32,7 @@ jobs:
  
       - name: Configurar EC2 com Ansible
         run: |
-          sudo amazon-linux-extras install ansible2 -y
+          sudo apt install ansible
           cd ansible
           ansible-playbook -i inventory setup.yml
  
