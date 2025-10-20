@@ -21,12 +21,16 @@ jobs:
  
       - name: Terraform Apply
         run: |
+          sudo yum install -y yum-utils
+          sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+          sudo yum install terraform -y
           cd infra
           terraform init
           terraform apply -auto-approve
  
       - name: Configurar EC2 com Ansible
         run: |
+          sudo amazon-linux-extras install ansible2 -y
           cd ansible
           ansible-playbook -i inventory setup.yml
  
