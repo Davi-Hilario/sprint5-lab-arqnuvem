@@ -26,20 +26,20 @@ jobs:
           chmod 400 ~/.ssh/key-19102025.pem
           ls -l ~/.ssh
 
+      - name: Instalar Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
+
       - name: Terraform Apply
         run: |
-          sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update
-          sudo apt-get install terraform
           cd infra
           terraform init
           terraform apply -auto-approve
  
       - name: Configurar EC2 com Ansible
         run: |
-          sudo apt install ansible
+          sudo apt-get install ansible
           cd ansible
           ansible-playbook -i inventory setup.yml
  
